@@ -1,0 +1,6 @@
+@import '../../styles/utils/utils';
+
+.Home {
+	@include fc-cen;
+	padding: 2rem 6rem;
+}
