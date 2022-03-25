@@ -1,8 +1,8 @@
 import React from 'react'
-import HomePage from './pages/Home.page.jsx'
+import Routes from './Routes.jsx'
 
 function App() {
-	return <HomePage />
+	return <Routes />
 }
 
 export default App
