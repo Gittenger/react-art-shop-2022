@@ -2,8 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styles from './MenuItem.module.scss'
 
-const MenuItem = ({ title, subtitle, imgSrc }) => (
-	<Link to="/new" className={styles.Container}>
+const MenuItem = ({ title, subtitle, imgSrc, linkUrl }) => (
+	<Link to={linkUrl} className={styles.Container}>
 		<div
 			style={{
 				backgroundImage: `url(${imgSrc})`,
