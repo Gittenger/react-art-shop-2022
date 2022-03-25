@@ -4,3 +4,25 @@
 	@include fc-cen;
 	padding: 2rem 6rem;
 }
+
+.CollectionDetails {
+	display: flex;
+	flex-direction: column;
+
+	& > h1 {
+		font-size: 4rem;
+		margin: 0 auto 2.8rem;
+		text-transform: capitalize;
+	}
+
+	& > div {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		justify-items: center;
+		grid-gap: 1.5rem;
+
+		& > div {
+			margin-bottom: 3rem;
+		}
+	}
+}
