@@ -6,11 +6,13 @@ import HomePage from './pages/Home.page.jsx'
 
 const AppRoutes = () => (
 	<BrowserRouter>
-		<Routes>
-			<Route path="/" element={<Layout />}>
-				<Route index element={<HomePage />} />
-			</Route>
-		</Routes>
+		<Layout>
+			<Routes>
+				<Route path="/">
+					<Route index element={<HomePage />} />
+				</Route>
+			</Routes>
+		</Layout>
 	</BrowserRouter>
 )
 
