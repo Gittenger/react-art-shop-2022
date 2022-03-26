@@ -1,12 +1,16 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
+import CIndex from '../components.index'
 
-const Layout = props => (
-	<>
-		<h1>LAYOUT</h1>
-		{props.children}
-		<Outlet />
-	</>
-)
+const Layout = props => {
+	const { Header } = CIndex
+	return (
+		<>
+			<Header />
+			{props.children}
+			<Outlet />
+		</>
+	)
+}
 
 export default Layout
