@@ -1,4 +1,6 @@
 import React from 'react'
+import CIndex from '../components/components.index'
+
 const CollectionsOverview = () => {
 	const collections = [
 		{
@@ -38,10 +40,16 @@ const CollectionsOverview = () => {
 		},
 	]
 
-const CollectionsOverview = () => (
-	<div>
-		<h1>Collections Overview</h1>
-	</div>
-)
+	const { CollectionPreview } = CIndex
+
+	return (
+		<div>
+			<h1>Collections Overview</h1>
+			{collections.map(({ ...collectionProps }, i) => (
+				<CollectionPreview key={i} {...collectionProps} />
+			))}
+		</div>
+	)
+}
 
 export default CollectionsOverview
