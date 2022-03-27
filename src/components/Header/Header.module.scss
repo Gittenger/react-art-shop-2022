@@ -1,0 +1,45 @@
+.Header {
+	height: 7rem;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 2.5rem;
+
+	// Logo container
+	& > :first-child {
+		height: 100%;
+		width: 8rem;
+		padding: 2rem;
+
+		a {
+			font-size: 2.3rem;
+			text-decoration: none;
+			color: unset;
+		}
+	}
+
+	nav {
+		width: 50%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+
+		a {
+			padding: 1rem 1.5rem;
+			font-size: 2.1rem;
+			text-transform: uppercase;
+			text-decoration: underline;
+			color: dodgerblue;
+			transition: color 0.3s;
+
+			&:visited {
+				color: dodgerblue;
+			}
+
+			&:hover {
+				color: indigo;
+			}
+		}
+	}
+}
