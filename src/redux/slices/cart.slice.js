@@ -24,6 +24,10 @@ export const cartSlice = createSlice({
 			),
 		}),
 		clearCart: state => ({ ...state, cartItems: [] }),
+
+		// saga actions
+		// no payload
+		checkoutSuccess: state => state,
 	},
 })
 
@@ -33,6 +37,7 @@ export const {
 	removeItem,
 	clearItemFromCart,
 	clearCart,
+	checkoutSuccess,
 } = cartSlice.actions
 
 export default cartSlice.reducer
