@@ -2,6 +2,7 @@ import { all, put, call, takeLatest } from 'redux-saga/effects'
 import { userSlice } from '../slices/user.slice.js'
 
 const { actions } = userSlice
+let auth
 
 export function* getSnapshotFromUser(user, otherData) {
 	try {
@@ -20,7 +21,6 @@ export function* getSnapshotFromUser(user, otherData) {
 export function* signInWithEmail({ payload: { email, password } }) {
 	try {
 		// auth module import from firebase utils, return obj with user
-		let auth
 		const { user } = yield auth.signInWithEmail(email, password)
 		yield getSnapshotFromUser(user)
 	} catch (error) {
