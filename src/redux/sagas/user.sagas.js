@@ -1,7 +1,10 @@
-import { all, put, call, takeLatest } from 'redux-saga/effects'
+import { all, put, call, takeLatest, takeEvery } from 'redux-saga/effects'
 import { userSlice } from '../slices/user.slice.js'
 
 const { actions } = userSlice
+let auth
+let getCurrentUser
+let googleProvider
 
 export function* getSnapshotFromUser(user, otherData) {
 	try {
@@ -17,10 +20,22 @@ export function* getSnapshotFromUser(user, otherData) {
 	}
 }
 
+export function* signInWithGoogle() {
+	try {
+		const { user } = yield auth.signInWithPopup(googleProvider)
+		yield getSnapshotFromUser(user)
+	} catch (error) {
+		yield put(actions.authFailure(error.message))
+	}
+}
+
+export function* onGoogleSignInStart() {
+	yield takeEvery(actions.googleSignInStart, signInWithGoogle)
+}
+
 export function* signInWithEmail({ payload: { email, password } }) {
 	try {
 		// auth module import from firebase utils, return obj with user
-		let auth
 		const { user } = yield auth.signInWithEmail(email, password)
 		yield getSnapshotFromUser(user)
 	} catch (error) {
@@ -32,6 +47,62 @@ export function* onEmailSignInStart() {
 	yield takeLatest(actions.emailSignInStart, signInWithEmail)
 }
 
+export function* signUp({ payload: { displayName, email, password } }) {
+	try {
+		const { user } = yield auth.createUserWithEmail(email, password)
+		yield put(actions.signUpSuccess({ user, otherData: { displayName } }))
+	} catch (error) {
+		yield put(actions.authFailure(error))
+	}
+}
+
+export function* onSignUpStart() {
+	yield takeLatest(actions.signUpStart, signUp)
+}
+
+export function* onSignUpSuccess() {
+	yield takeLatest(actions.signUpSuccess, signInAfterSignUp)
+}
+
+export function* signInAfterSignUp({ payload: { user, otherData } }) {
+	yield getSnapshotFromUser(user, otherData)
+}
+
+export function* checkUserAuth() {
+	try {
+		// firebase import
+		const user = yield getCurrentUser()
+		if (!user) return
+		yield getSnapshotFromUser(user)
+	} catch (error) {
+		yield put(actions.authFailure(error))
+	}
+}
+
+export function* onCheckUserAuth() {
+	yield takeEvery(actions.checkUserAuth, checkUserAuth)
+}
+
+export function* signOut() {
+	try {
+		yield auth.signOut()
+		yield put(actions.signOutSuccess())
+	} catch (error) {
+		yield put(actions.authFailure(error.message))
+	}
+}
+
+export function* onSignOutStart() {
+	yield takeLatest(actions.signOutStart, signOut)
+}
+
 export default function* userSagas() {
-	yield all([call(onEmailSignInStart)])
+	yield all([
+		call(onEmailSignInStart),
+		call(onGoogleSignInStart),
+		call(onCheckUserAuth),
+		call(onSignOutStart),
+		call(onSignUpStart),
+		call(onSignUpSuccess),
+	])
 }
