@@ -1,32 +1,62 @@
-import React from 'react'
+import React, { useState } from 'react'
 
+import CIndex from '../components.index'
 import styles from './SignIn.module.scss'
 
-const SignIn = () => (
-	<div>
-		<h2>Already have an account?</h2>
-		<span>Sign in with your email and password</span>
-		<form onSubmit={() => {}}>
-			<input
-				type="email"
-				name="email"
-				label="email"
-				value="email-state"
-				required
-			/>
-			<input
-				type="password"
-				name="password"
-				label="password"
-				value="password-state"
-				required
-			/>
-			<div>
-				<button type="submit">Sign in</button>
-				<button>Sign in with Google</button>
-			</div>
-		</form>
-	</div>
-)
+const SignIn = () => {
+	const [credentials, setCredentials] = useState({
+		email: '',
+		password: '',
+	})
+
+	const { email, password } = credentials
+
+	const handleChange = e => {
+		const { name, value } = e.target
+
+		setCredentials({
+			...credentials,
+			[name]: value,
+		})
+	}
+
+	const handleSubmit = e => {
+		e.preventDefault()
+
+		let emailSignInStart // from redux action
+		emailSignInStart()
+	}
+
+	const { AuthFormContainer, FormInput } = CIndex
+
+	return (
+		<AuthFormContainer>
+			<h2>Already have an account?</h2>
+			<span>Sign in with your email and password</span>
+			<form onSubmit={handleSubmit}>
+				<FormInput
+					handleChange={handleChange}
+					type="email"
+					name="email"
+					label="Email"
+					value={email}
+					required
+				/>
+				<FormInput
+					handleChange={handleChange}
+					type="password"
+					name="password"
+					label="Password"
+					value={password}
+					required
+				/>
+				<div className={styles.Buttons}>
+					<button type="submit">Sign in</button>
+					<button>Sign in with Google</button>
+				</div>
+			</form>
+		</AuthFormContainer>
+	)
+}
 
 export default SignIn

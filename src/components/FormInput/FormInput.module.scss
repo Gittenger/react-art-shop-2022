@@ -1,0 +1,53 @@
+@mixin shrink-label {
+	top: -14px;
+	font-size: 12px;
+	color: var(--mainColor);
+}
+
+.Container {
+	position: relative;
+	margin: 1.5rem 0;
+
+	--subColor: grey;
+	--mainColor: black;
+
+	input[type='password'] {
+		letter-spacing: 0.2em;
+	}
+
+	input {
+		background: none;
+		background-color: #f0f0f0;
+		color: var(--subColor);
+		font-size: 2rem;
+		padding: 1rem 1rem 1rem 5px;
+		display: block;
+		width: 100%;
+		border: none;
+		border-radius: 0;
+		border-bottom: 1px solid var(--subColor);
+
+		&:focus {
+			outline: none;
+		}
+
+		&:focus ~ label {
+			@include shrink-label;
+		}
+	}
+}
+
+.Label {
+	color: var(--subColor);
+	font-size: 1.6rem;
+	font-weight: normal;
+	position: absolute;
+	pointer-events: none;
+	left: 5px;
+	top: 10px;
+	transition: 0.3s all;
+}
+
+.LabelShrink {
+	@include shrink-label;
+}

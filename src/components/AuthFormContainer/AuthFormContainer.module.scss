@@ -1,0 +1,15 @@
+.Container {
+	display: flex;
+	flex-direction: column;
+	width: 38rem;
+
+	& > h2 {
+		margin: 1rem 0;
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		padding-top: 1.5rem;
+	}
+}
