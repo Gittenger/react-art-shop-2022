@@ -9,17 +9,15 @@ import rootSaga from './sagas/_root.saga'
 
 const sagaMiddleware = createSagaMiddleware()
 
-export default function store() {
-	const store = configureStore({
-		reducer: {
-			directory: directorySlice,
-			cart: cartSlice,
-			shop: shopSlice,
-			user: userSlice,
-		},
-		middleware: getDefaultMiddleware =>
-			getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),
-	})
-	sagaMiddleware.run(rootSaga)
-	return store
-}
+const store = configureStore({
+	reducer: {
+		directory: directorySlice,
+		cart: cartSlice,
+		shop: shopSlice,
+		user: userSlice,
+	},
+	middleware: getDefaultMiddleware =>
+		getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),
+})
+sagaMiddleware.run(rootSaga)
+export default store
