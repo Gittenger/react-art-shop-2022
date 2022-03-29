@@ -1,20 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import CIndex from '../components.index.js'
 import styles from './Header.module.scss'
 
-const Header = () => (
-	<header className={styles.Header}>
-		<div>
-			<Link to="/">LOGO</Link>
-		</div>
+const Header = () => {
+	const { Nav } = CIndex
 
-		<nav>
-			<Link to="/shop">Shop</Link>
-			<Link to="/contact">Contact</Link>
-			<Link to="/login">Sign in</Link>
-		</nav>
-	</header>
-)
+	return (
+		<header className={styles.Header}>
+			<div>
+				<Link to="/">LOGO</Link>
+			</div>
+
+			<Nav />
+		</header>
+	)
+}
 
 export default Header

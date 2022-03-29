@@ -7,6 +7,7 @@ import SignUp from './SignUp/SignUp.component.jsx'
 import CollectionItem from './CollectionItem/CollectionItem.component.jsx'
 import CollectionPreview from './CollectionPreview/CollectionPreview.component.jsx'
 import Header from './Header/Header.component.jsx'
+import Nav from './Nav/Nav.component.jsx'
 
 export const CIndex = {
 	Directory,
@@ -14,6 +15,7 @@ export const CIndex = {
 	MenuItem,
 	CollectionPreview,
 	Header,
+	Nav,
 	AuthFormContainer,
 	FormInput,
 	SignIn,
