@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import styles from './SignUp.module.scss'
+import CIndex from '../components.index.js'
 
 const SignUp = () => {
 	const [credentials, setCredentials] = useState({
@@ -33,8 +33,10 @@ const SignUp = () => {
 		signUpStart({ email, displayName, password })
 	}
 
+	const { AuthFormContainer } = CIndex
+
 	return (
-		<div>
+		<AuthFormContainer>
 			<h2>Don't have an account yet?</h2>
 			<span>Sign up with your email and password</span>
 			<form onSubmit={() => {}}>
@@ -73,7 +75,7 @@ const SignUp = () => {
 
 				<button type="submit">Sign Up</button>
 			</form>
-		</div>
+		</AuthFormContainer>
 	)
 }
 

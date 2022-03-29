@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+import CIndex from '../components.index'
 import styles from './SignIn.module.scss'
 
 const SignIn = () => {
@@ -26,8 +27,10 @@ const SignIn = () => {
 		emailSignInStart()
 	}
 
+	const { AuthFormContainer } = CIndex
+
 	return (
-		<div>
+		<AuthFormContainer>
 			<h2>Already have an account?</h2>
 			<span>Sign in with your email and password</span>
 			<form onSubmit={handleSubmit}>
@@ -47,12 +50,12 @@ const SignIn = () => {
 					value={password}
 					required
 				/>
-				<div>
+				<div className={styles.Buttons}>
 					<button type="submit">Sign in</button>
 					<button>Sign in with Google</button>
 				</div>
 			</form>
-		</div>
+		</AuthFormContainer>
 	)
 }
 
