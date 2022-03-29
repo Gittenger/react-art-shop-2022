@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const data = 'some-imported-data'
+import sections from '../directory.data.js'
 
 export const directorySlice = createSlice({
 	name: 'directory',
 	initialState: {
-		data,
+		sections,
 	},
 	reducers: {
 		defAction: state => state,
