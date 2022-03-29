@@ -1,0 +1,24 @@
+.Nav {
+	width: 50%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+
+	a {
+		padding: 1rem 1.5rem;
+		font-size: 2.1rem;
+		text-transform: uppercase;
+		text-decoration: underline;
+		color: dodgerblue;
+		transition: color 0.3s;
+
+		&:visited {
+			color: dodgerblue;
+		}
+
+		&:hover {
+			color: indigo;
+		}
+	}
+}
