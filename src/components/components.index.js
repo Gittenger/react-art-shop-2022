@@ -1,5 +1,6 @@
 import Directory from './Directory/Directory.component.jsx'
 import MenuItem from './MenuItem/MenuItem.component.jsx'
+import AuthFormContainer from './AuthFormContainer/AuthFormContainer.component.jsx'
 import SignIn from './SignIn/SignIn.component.jsx'
 import SignUp from './SignUp/SignUp.component.jsx'
 import CollectionItem from './CollectionItem/CollectionItem.component.jsx'
@@ -12,6 +13,7 @@ export const CIndex = {
 	MenuItem,
 	CollectionPreview,
 	Header,
+	AuthFormContainer,
 	SignIn,
 	SignUp,
 }
