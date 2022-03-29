@@ -19,11 +19,18 @@ const SignIn = () => {
 		})
 	}
 
+	const handleSubmit = e => {
+		e.preventDefault()
+
+		let emailSignInStart // from redux action
+		emailSignInStart()
+	}
+
 	return (
 		<div>
 			<h2>Already have an account?</h2>
 			<span>Sign in with your email and password</span>
-			<form onSubmit={() => {}}>
+			<form onSubmit={handleSubmit}>
 				<input
 					onChange={handleChange}
 					type="email"
