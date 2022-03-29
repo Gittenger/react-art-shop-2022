@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { addItemToCart, removeItemFromCart } from './utils/cart.utils.js'
+import { addItemToCart, removeItemFromCart } from '../utils/cart.utils.js'
 
 export const cartSlice = createSlice({
 	name: 'cart',
