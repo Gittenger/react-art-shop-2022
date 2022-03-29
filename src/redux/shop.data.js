@@ -16,6 +16,23 @@ export const collections = {
 			},
 		],
 	},
+	sculptures: {
+		title: 'sculptures',
+		items: [
+			{
+				id: 1,
+				name: 'Apollo Bust',
+				imgSrc: 'https://m.media-amazon.com/images/I/61b0dmTD5eL._AC_SX679_.jpg',
+				price: '$200',
+			},
+			{
+				id: 2,
+				name: 'Atlas Statue',
+				imgSrc: 'https://m.media-amazon.com/images/I/61jF-nCABPL._AC_SY879_.jpg',
+				price: '$150',
+			},
+		],
+	},
 	accessories: {
 		title: 'accessories',
 		items: [
