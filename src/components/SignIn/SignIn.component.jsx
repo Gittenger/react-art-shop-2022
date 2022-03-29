@@ -27,26 +27,26 @@ const SignIn = () => {
 		emailSignInStart()
 	}
 
-	const { AuthFormContainer } = CIndex
+	const { AuthFormContainer, FormInput } = CIndex
 
 	return (
 		<AuthFormContainer>
 			<h2>Already have an account?</h2>
 			<span>Sign in with your email and password</span>
 			<form onSubmit={handleSubmit}>
-				<input
-					onChange={handleChange}
+				<FormInput
+					handleChange={handleChange}
 					type="email"
 					name="email"
-					label="email"
+					label="Email"
 					value={email}
 					required
 				/>
-				<input
-					onChange={handleChange}
+				<FormInput
+					handleChange={handleChange}
 					type="password"
 					name="password"
-					label="password"
+					label="Password"
 					value={password}
 					required
 				/>

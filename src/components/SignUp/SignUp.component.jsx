@@ -33,42 +33,42 @@ const SignUp = () => {
 		signUpStart({ email, displayName, password })
 	}
 
-	const { AuthFormContainer } = CIndex
+	const { AuthFormContainer, FormInput } = CIndex
 
 	return (
 		<AuthFormContainer>
 			<h2>Don't have an account yet?</h2>
 			<span>Sign up with your email and password</span>
 			<form onSubmit={() => {}}>
-				<input
-					onChange={handleChange}
+				<FormInput
+					handleChange={handleChange}
 					type="text"
 					name="displayName"
-					label="displayName"
+					label="Display Name"
 					value={displayName}
 					required
 				/>
-				<input
-					onChange={handleChange}
+				<FormInput
+					handleChange={handleChange}
 					type="email"
 					name="email"
-					label="email"
+					label="Email"
 					value={email}
 					required
 				/>
-				<input
-					onChange={handleChange}
+				<FormInput
+					handleChange={handleChange}
 					type="password"
 					name="password"
-					label="password"
+					label="Password"
 					value={password}
 					required
 				/>
-				<input
-					onChange={handleChange}
+				<FormInput
+					handleChange={handleChange}
 					type="password"
 					name="confirmPassword"
-					label="confirmPassword"
+					label="Confirm Password"
 					value={confirmPassword}
 					required
 				/>
