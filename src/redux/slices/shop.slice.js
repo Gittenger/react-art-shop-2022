@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
+import collections from '../shop.data'
 
 export const shopSlice = createSlice({
 	name: 'shop',
 	initialState: {
-		collections: null,
+		collections,
 		isFetching: false,
 		errorMessage: undefined,
 	},
