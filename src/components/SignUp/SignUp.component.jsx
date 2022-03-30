@@ -33,7 +33,7 @@ const SignUp = () => {
 		signUpStart({ email, displayName, password })
 	}
 
-	const { AuthFormContainer, FormInput } = CIndex
+	const { AuthFormContainer, FormInput, CustomButton } = CIndex
 
 	return (
 		<AuthFormContainer>
@@ -73,7 +73,7 @@ const SignUp = () => {
 					required
 				/>
 
-				<button type="submit">Sign Up</button>
+				<CustomButton type="submit">Sign Up</CustomButton>
 			</form>
 		</AuthFormContainer>
 	)

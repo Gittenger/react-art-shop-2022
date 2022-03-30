@@ -1,0 +1,50 @@
+.Button {
+	min-width: 16rem;
+	width: auto;
+	height: 5rem;
+	letter-spacing: 0.5px;
+	line-height: 5rem;
+	padding: 0 3rem 0 3rem;
+	font-size: 1.5rem;
+	text-transform: uppercase;
+	font-weight: bolder;
+	white-space: nowrap;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	transition: background-color 0.3s, color 0.3s;
+}
+
+.Google {
+	background-color: #4285f4;
+	color: white;
+
+	&:hover {
+		background-color: #2663c5;
+		border: none;
+	}
+}
+
+.Normal {
+	background-color: black;
+	color: white;
+	border: none;
+
+	&:hover {
+		background-color: white;
+		color: black;
+		border: 1px solid black;
+	}
+}
+
+.Inverted {
+	background-color: white;
+	color: black;
+	border: 1px solid black;
+
+	&:hover {
+		background-color: black;
+		color: white;
+		border: none;
+	}
+}

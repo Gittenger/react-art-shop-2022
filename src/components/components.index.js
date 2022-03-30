@@ -1,3 +1,4 @@
+import CustomButton from './CustomButton/CustomButton.component.jsx'
 import Directory from './Directory/Directory.component.jsx'
 import MenuItem from './MenuItem/MenuItem.component.jsx'
 import AuthFormContainer from './AuthFormContainer/AuthFormContainer.component.jsx'
@@ -10,6 +11,7 @@ import Header from './Header/Header.component.jsx'
 import Nav from './Nav/Nav.component.jsx'
 
 export const CIndex = {
+	CustomButton,
 	Directory,
 	CollectionItem,
 	MenuItem,
