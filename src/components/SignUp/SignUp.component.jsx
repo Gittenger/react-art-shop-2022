@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 
+import { useDispatch } from 'react-redux'
+import { signUpStart } from '../../redux/slices/user.slice.js'
 import CIndex from '../components.index.js'
 
 const SignUp = () => {
+	const dispatch = useDispatch()
 	const [credentials, setCredentials] = useState({
 		email: '',
 		displayName: '',
@@ -29,8 +32,7 @@ const SignUp = () => {
 			return
 		}
 
-		let signUpStart // redux actions
-		signUpStart({ email, displayName, password })
+		dispatch(signUpStart({ email, displayName, password }))
 	}
 
 	const { AuthFormContainer, FormInput, CustomButton } = CIndex
@@ -39,7 +41,7 @@ const SignUp = () => {
 		<AuthFormContainer>
 			<h2>Don't have an account yet?</h2>
 			<span>Sign up with your email and password</span>
-			<form onSubmit={() => {}}>
+			<form onSubmit={handleSubmit}>
 				<FormInput
 					handleChange={handleChange}
 					type="text"
