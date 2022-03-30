@@ -9,11 +9,11 @@ export function* clearCartItems() {
 }
 
 export function* onSignOutSuccess() {
-	yield takeLatest(userSlice.actions.signOutSuccess, clearCartItems)
+	yield takeLatest(userSlice.actions.signOutSuccess().type, clearCartItems)
 }
 
 export function* onCheckoutSuccess() {
-	yield takeLatest(actions.checkoutSuccess, clearCartItems)
+	yield takeLatest(actions.checkoutSuccess().type, clearCartItems)
 }
 
 export default function* cartSagas() {

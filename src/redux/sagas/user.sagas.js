@@ -30,7 +30,7 @@ export function* signInWithGoogle() {
 }
 
 export function* onGoogleSignInStart() {
-	yield takeEvery(actions.googleSignInStart, signInWithGoogle)
+	yield takeEvery(actions.googleSignInStart().type, signInWithGoogle)
 }
 
 export function* signInWithEmail({ payload: { email, password } }) {
@@ -44,7 +44,7 @@ export function* signInWithEmail({ payload: { email, password } }) {
 }
 
 export function* onEmailSignInStart() {
-	yield takeLatest(actions.emailSignInStart, signInWithEmail)
+	yield takeLatest(actions.emailSignInStart().type, signInWithEmail)
 }
 
 export function* signUp({ payload: { displayName, email, password } }) {
@@ -57,11 +57,11 @@ export function* signUp({ payload: { displayName, email, password } }) {
 }
 
 export function* onSignUpStart() {
-	yield takeLatest(actions.signUpStart, signUp)
+	yield takeLatest(actions.signUpStart().type, signUp)
 }
 
 export function* onSignUpSuccess() {
-	yield takeLatest(actions.signUpSuccess, signInAfterSignUp)
+	yield takeLatest(actions.signUpSuccess().type, signInAfterSignUp)
 }
 
 export function* signInAfterSignUp({ payload: { user, otherData } }) {
@@ -80,7 +80,7 @@ export function* checkUserAuth() {
 }
 
 export function* onCheckUserAuth() {
-	yield takeEvery(actions.checkUserAuth, checkUserAuth)
+	yield takeEvery(actions.checkUserAuth().type, checkUserAuth)
 }
 
 export function* signOut() {
@@ -93,7 +93,7 @@ export function* signOut() {
 }
 
 export function* onSignOutStart() {
-	yield takeLatest(actions.signOutStart, signOut)
+	yield takeLatest(actions.signOutStart().type, signOut)
 }
 
 export default function* userSagas() {
