@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 
+import { useDispatch } from 'react-redux'
+import { emailSignInStart } from '../../redux/slices/user.slice'
 import CIndex from '../components.index'
 import styles from './SignIn.module.scss'
 
 const SignIn = () => {
+	const dispatch = useDispatch()
 	const [credentials, setCredentials] = useState({
 		email: '',
 		password: '',
@@ -23,8 +26,7 @@ const SignIn = () => {
 	const handleSubmit = e => {
 		e.preventDefault()
 
-		let emailSignInStart // from redux action
-		emailSignInStart()
+		dispatch(emailSignInStart({ email, password }))
 	}
 
 	const { AuthFormContainer, FormInput, CustomButton } = CIndex
