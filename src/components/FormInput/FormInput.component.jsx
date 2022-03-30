@@ -3,10 +3,6 @@ import React, { useEffect } from 'react'
 import styles from './FormInput.module.scss'
 
 const FormInput = ({ label, handleChange, ...otherProps }) => {
-	useEffect(() => {
-		console.log(otherProps.value.length)
-	}, [otherProps])
-
 	return (
 		<div className={styles.Container}>
 			<input onChange={handleChange} {...otherProps} />
