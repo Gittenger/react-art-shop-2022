@@ -27,7 +27,7 @@ const SignIn = () => {
 		emailSignInStart()
 	}
 
-	const { AuthFormContainer, FormInput } = CIndex
+	const { AuthFormContainer, FormInput, CustomButton } = CIndex
 
 	return (
 		<AuthFormContainer>
@@ -51,8 +51,8 @@ const SignIn = () => {
 					required
 				/>
 				<div className={styles.Buttons}>
-					<button type="submit">Sign in</button>
-					<button>Sign in with Google</button>
+					<CustomButton type="submit">Sign in</CustomButton>
+					<CustomButton isGoogle>Sign in with Google</CustomButton>
 				</div>
 			</form>
 		</AuthFormContainer>
