@@ -20,5 +20,5 @@ export const selectShopCollection = urlParam =>
 		[selectCollections],
 
 		// urlParam is key for collection
-		collections => (collections ? collections[urlParam] : null)
+		collections => (collections ? collections[urlParam] : {})
 	)
