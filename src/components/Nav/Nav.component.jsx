@@ -3,12 +3,14 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { signOutStart } from '../../redux/slices/user.slice'
 import { selectCurrentUser } from '../../redux/selectors/user.selectors'
+import { selectCartHidden } from '../../redux/selectors/cart.selectors'
 
 import CIndex from '../components.index'
 import styles from './Nav.module.scss'
 
 const Nav = () => {
 	const currentUser = useSelector(selectCurrentUser)
+	const cartHidden = useSelector(selectCartHidden)
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 
@@ -17,7 +19,7 @@ const Nav = () => {
 		navigate('/')
 	}
 
-	const { CartIcon } = CIndex
+	const { CartIcon, CartDropdown } = CIndex
 
 	return (
 		<nav className={styles.Nav}>
@@ -31,6 +33,7 @@ const Nav = () => {
 				<Link to="/login">Sign in</Link>
 			)}
 			<CartIcon />
+			{cartHidden ? null : <CartDropdown />}
 		</nav>
 	)
 }
