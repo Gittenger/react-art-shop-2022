@@ -1,14 +1,34 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { signOutStart } from '../../redux/slices/user.slice'
+import { selectCurrentUser } from '../../redux/selectors/user.selectors'
 
 import styles from './Nav.module.scss'
 
-const Nav = () => (
-	<nav className={styles.Nav}>
-		<Link to="/shop">Shop</Link>
-		<Link to="/contact">Contact</Link>
-		<Link to="/login">Sign in</Link>
-	</nav>
-)
+const Nav = () => {
+	const currentUser = useSelector(selectCurrentUser)
+	const dispatch = useDispatch()
+	const navigate = useNavigate()
+
+	const handleSignOut = () => {
+		dispatch(signOutStart())
+		navigate('/')
+	}
+
+	return (
+		<nav className={styles.Nav}>
+			<Link to="/shop">Shop</Link>
+			<Link to="/contact">Contact</Link>
+			{currentUser ? (
+				<Link to="#" onClick={handleSignOut}>
+					Sign out
+				</Link>
+			) : (
+				<Link to="/login">Sign in</Link>
+			)}
+		</nav>
+	)
+}
 
 export default Nav

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectCurrentUser } from './redux/selectors/user.selectors.js'
 import { checkUserAuth } from './redux/slices/user.slice.js'
 
 import Layout from './components/Layout/Layout.component.jsx'
@@ -11,6 +12,7 @@ import CollectionDetails from './pages/CollectionDetails.page.jsx'
 
 const AppRoutes = () => {
 	const dispatch = useDispatch()
+	const currentUser = useSelector(selectCurrentUser)
 
 	useEffect(() => {
 		dispatch(checkUserAuth())
@@ -27,7 +29,10 @@ const AppRoutes = () => {
 							<Route path=":collectionName" element={<CollectionDetails />} />
 						</Route>
 						<Route path="login">
-							<Route index element={<Login />} />
+							<Route
+								index
+								element={currentUser ? <Navigate replace to="/" /> : <Login />}
+							/>
 						</Route>
 					</Route>
 				</Routes>
