@@ -1,7 +1,11 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { addItem } from '../../redux/slices/cart.slice.js'
+
 import styles from './CollectionItem.module.scss'
 
 const CollectionItem = ({ item }) => {
+	const dispatch = useDispatch()
 	const { name, imgSrc, price } = item
 
 	return (
@@ -11,7 +15,7 @@ const CollectionItem = ({ item }) => {
 				<span>{name}</span>
 				<span>{price}</span>
 			</div>
-			<button>Add to cart</button>
+			<button onClick={() => dispatch(addItem(item))}>Add to cart</button>
 		</div>
 	)
 }
