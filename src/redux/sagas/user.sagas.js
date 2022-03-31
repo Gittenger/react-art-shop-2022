@@ -2,7 +2,7 @@ import { all, put, call, takeLatest, takeEvery } from 'redux-saga/effects'
 import { userSlice } from '../slices/user.slice.js'
 
 import {
-	getAuth,
+	signOut as firebaseSignOut,
 	signInWithEmailAndPassword,
 	createUserWithEmailAndPassword,
 } from 'firebase/auth'
@@ -102,7 +102,7 @@ export function* onCheckUserAuth() {
 
 export function* signOut() {
 	try {
-		yield auth.signOut()
+		yield firebaseSignOut(auth)
 		yield put(actions.signOutSuccess())
 	} catch (error) {
 		yield put(actions.authFailure(error.message))
