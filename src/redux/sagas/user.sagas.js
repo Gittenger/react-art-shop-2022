@@ -8,13 +8,13 @@ import {
 } from 'firebase/auth'
 import {
 	firebase,
+	getCurrentUser,
 	createUserProfileDocument,
 } from '../../firebase/firebase.utils.js'
 import { getDoc } from 'firebase/firestore'
 
 const { actions } = userSlice
 let auth
-let getCurrentUser
 let googleProvider
 
 // pass in user data, put firestore doc data into redux & login
@@ -89,6 +89,8 @@ export function* onSignUpSuccess() {
 	yield takeLatest(actions.signUpSuccess().type, signInAfterSignUp)
 }
 
+// check for current user from auth
+// update redux state with logged in user if user exists
 export function* checkUserAuth() {
 	try {
 		const user = yield getCurrentUser()
