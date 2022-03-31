@@ -5,6 +5,8 @@ import {
 	signOut as firebaseSignOut,
 	signInWithEmailAndPassword,
 	createUserWithEmailAndPassword,
+	signInWithPopup,
+	GoogleAuthProvider,
 } from 'firebase/auth'
 import {
 	auth,
@@ -14,7 +16,7 @@ import {
 import { getDoc } from 'firebase/firestore'
 
 const { actions } = userSlice
-let googleProvider
+const googleProvider = new GoogleAuthProvider()
 
 // pass in user data, put firestore doc data into redux & login
 export function* getSnapshotFromUser(user, otherData) {
@@ -33,7 +35,7 @@ export function* getSnapshotFromUser(user, otherData) {
 
 export function* signInWithGoogle() {
 	try {
-		const { user } = yield auth.signInWithPopup(googleProvider)
+		const { user } = yield signInWithPopup(auth, googleProvider)
 		yield getSnapshotFromUser(user)
 	} catch (error) {
 		yield put(actions.authFailure(error.message))
