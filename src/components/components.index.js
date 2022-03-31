@@ -5,6 +5,9 @@ import AuthFormContainer from './AuthFormContainer/AuthFormContainer.component.j
 import FormInput from './FormInput/FormInput.component.jsx'
 import SignIn from './SignIn/SignIn.component.jsx'
 import SignUp from './SignUp/SignUp.component.jsx'
+import CartDropdown from './CartDropdown/CartDropdown.component.jsx'
+import CartIcon from './CartIcon/CartIcon.component.jsx'
+import CartItem from './CartItem/CartItem.component.jsx'
 import CollectionItem from './CollectionItem/CollectionItem.component.jsx'
 import CollectionPreview from './CollectionPreview/CollectionPreview.component.jsx'
 import Header from './Header/Header.component.jsx'
@@ -18,6 +21,9 @@ export const CIndex = {
 	CollectionPreview,
 	Header,
 	Nav,
+	CartIcon,
+	CartItem,
+	CartDropdown,
 	AuthFormContainer,
 	FormInput,
 	SignIn,
