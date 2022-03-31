@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 
 import { useDispatch } from 'react-redux'
-import { emailSignInStart } from '../../redux/slices/user.slice'
+import {
+	emailSignInStart,
+	googleSignInStart,
+} from '../../redux/slices/user.slice'
 import CIndex from '../components.index'
 import styles from './SignIn.module.scss'
 
@@ -54,7 +57,9 @@ const SignIn = () => {
 				/>
 				<div className={styles.Buttons}>
 					<CustomButton type="submit">Sign in</CustomButton>
-					<CustomButton isGoogle>Sign in with Google</CustomButton>
+					<CustomButton onClick={() => dispatch(googleSignInStart())} isGoogle>
+						Sign in with Google
+					</CustomButton>
 				</div>
 			</form>
 		</AuthFormContainer>
