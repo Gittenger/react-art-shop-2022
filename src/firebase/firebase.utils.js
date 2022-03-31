@@ -6,6 +6,7 @@ import {
 	getDoc,
 	Timestamp,
 } from 'firebase/firestore'
+import { getAuth } from 'firebase/auth'
 
 import CollectionsData from '../redux/shop.data.js'
 
@@ -20,16 +21,17 @@ const config = {
 
 export const firebase = initializeApp(config)
 export const firestore = getFirestore(firebase)
+const auth = getAuth(firebase)
 
 // create document for user on sign up or sign in
-export const createUserProfileDocument = async (userAuth, otherData) => {
-	const userRef = doc(firestore, 'users', userAuth.uid)
+export const createUserProfileDocument = async (user, otherData) => {
+	const userRef = doc(firestore, 'users', user.uid)
 	const snapshot = await getDoc(userRef)
 
 	// if no doc, create one
 	// then return ref to doc
 	if (!snapshot.exists()) {
-		const { email, displayName } = userAuth
+		const { email, displayName } = user
 		const createdAt = Timestamp.fromDate(new Date())
 
 		try {
@@ -66,5 +68,15 @@ export const transformSnapshotData = collections =>
 			acc[collection.title] = collection
 			return acc
 		}, {})
+
+export const getCurrentUser = () =>
+	new Promise((resolve, reject) => {
+		const unsubscribe = auth.onAuthStateChanged(userAuth => {
+			unsubscribe()
+
+			// resolves with either user, or null
+			resolve(userAuth)
+		}, reject)
+	})
 
 export default firebase
