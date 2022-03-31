@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { signOutStart } from '../../redux/slices/user.slice'
 import { selectCurrentUser } from '../../redux/selectors/user.selectors'
 
+import CIndex from '../components.index'
 import styles from './Nav.module.scss'
 
 const Nav = () => {
@@ -16,6 +17,8 @@ const Nav = () => {
 		navigate('/')
 	}
 
+	const { CartIcon } = CIndex
+
 	return (
 		<nav className={styles.Nav}>
 			<Link to="/shop">Shop</Link>
@@ -27,6 +30,7 @@ const Nav = () => {
 			) : (
 				<Link to="/login">Sign in</Link>
 			)}
+			<CartIcon />
 		</nav>
 	)
 }
