@@ -7,14 +7,13 @@ import {
 	createUserWithEmailAndPassword,
 } from 'firebase/auth'
 import {
-	firebase,
+	auth,
 	getCurrentUser,
 	createUserProfileDocument,
 } from '../../firebase/firebase.utils.js'
 import { getDoc } from 'firebase/firestore'
 
 const { actions } = userSlice
-let auth
 let googleProvider
 
 // pass in user data, put firestore doc data into redux & login
@@ -47,8 +46,6 @@ export function* onGoogleSignInStart() {
 
 export function* signInWithEmail({ payload: { email, password } }) {
 	try {
-		const auth = getAuth(firebase)
-
 		const { user } = yield call(signInWithEmailAndPassword, auth, email, password)
 		yield getSnapshotFromUser(user)
 	} catch (error) {
@@ -62,8 +59,6 @@ export function* onEmailSignInStart() {
 
 export function* signUp({ payload: { displayName, email, password } }) {
 	try {
-		const auth = getAuth(firebase)
-
 		const { user } = yield call(
 			createUserWithEmailAndPassword,
 			auth,
