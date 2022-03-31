@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { BallTriangle as Spinner } from 'react-loader-spinner'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchCollectionsStart } from '../redux/slices/shop.slice.js'
 import {
@@ -12,7 +11,6 @@ import styles from './_styles/Pages.module.scss'
 
 const CollectionsOverview = () => {
 	const dispatch = useDispatch()
-	const { CollectionPreview } = CIndex
 	const collections = useSelector(selectCollectionsForPreview)
 	const shopIsLoading = useSelector(selectShopIsLoading)
 
@@ -20,12 +18,12 @@ const CollectionsOverview = () => {
 		dispatch(fetchCollectionsStart())
 	}, [dispatch])
 
+	const { CollectionPreview, Spinner } = CIndex
+
 	return (
 		<div className={styles.ShopOverview}>
 			{shopIsLoading ? (
-				<div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-					<Spinner />
-				</div>
+				<Spinner />
 			) : (
 				<>
 					<h1>Browse our shop...</h1>
