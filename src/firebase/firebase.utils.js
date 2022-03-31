@@ -21,7 +21,7 @@ const config = {
 
 export const firebase = initializeApp(config)
 export const firestore = getFirestore(firebase)
-const auth = getAuth(firebase)
+export const auth = getAuth(firebase)
 
 // create document for user on sign up or sign in
 export const createUserProfileDocument = async (user, otherData) => {
