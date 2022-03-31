@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import collections from '../shop.data'
 // import collections from '../shop.data'
 
 export const shopSlice = createSlice({
@@ -9,7 +10,10 @@ export const shopSlice = createSlice({
 		errorMessage: undefined,
 	},
 	reducers: {
-		fetchCollectionsStart: state => ({ ...state, isFetching: true }),
+		fetchCollectionsStart: state => {
+			if (!!state.collections) return state
+			return { ...state, isFetching: true }
+		},
 		fetchCollectionsSuccess: (state, action) => ({
 			...state,
 			collections: action.payload,
