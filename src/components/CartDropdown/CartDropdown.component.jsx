@@ -12,13 +12,13 @@ const CartDropdown = () => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 
-	const { CustomButton } = CIndex
+	const { CustomButton, CartItem } = CIndex
 
 	return (
 		<div className={styles.Container}>
 			<div>
 				{cartItems.length > 0 ? (
-					cartItems.map(item => <div>{item.id}</div>)
+					cartItems.map((item, i) => <CartItem key={i} item={item} />)
 				) : (
 					<span>Your cart is empty</span>
 				)}
