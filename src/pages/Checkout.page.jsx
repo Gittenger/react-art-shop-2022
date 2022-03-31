@@ -12,7 +12,7 @@ const Checkout = () => {
 	const cartTotal = useSelector(selectCartTotal)
 	const cartItems = useSelector(selectCartItems)
 
-	const { CartItem } = CIndex
+	const { CheckoutItem } = CIndex
 
 	return (
 		<div className={styles.Checkout}>
@@ -34,7 +34,7 @@ const Checkout = () => {
 				</div>
 			</div>
 			{cartItems.map((item, i) => (
-				<CartItem key={i} item={item} />
+				<CheckoutItem key={i} item={item} />
 			))}
 			<div>
 				<span>Total: ${cartTotal}</span>

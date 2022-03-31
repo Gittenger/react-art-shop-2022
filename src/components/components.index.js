@@ -8,6 +8,7 @@ import SignUp from './SignUp/SignUp.component.jsx'
 import CartDropdown from './CartDropdown/CartDropdown.component.jsx'
 import CartIcon from './CartIcon/CartIcon.component.jsx'
 import CartItem from './CartItem/CartItem.component.jsx'
+import CheckoutItem from './CheckoutItem/CheckoutItem.component.jsx'
 import CollectionItem from './CollectionItem/CollectionItem.component.jsx'
 import CollectionPreview from './CollectionPreview/CollectionPreview.component.jsx'
 import Header from './Header/Header.component.jsx'
@@ -22,6 +23,7 @@ export const CIndex = {
 	Header,
 	Nav,
 	CartIcon,
+	CheckoutItem,
 	CartItem,
 	CartDropdown,
 	AuthFormContainer,
