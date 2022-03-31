@@ -13,6 +13,7 @@ import CollectionItem from './CollectionItem/CollectionItem.component.jsx'
 import CollectionPreview from './CollectionPreview/CollectionPreview.component.jsx'
 import Header from './Header/Header.component.jsx'
 import Nav from './Nav/Nav.component.jsx'
+import Spinner from './Spinner/Spinner.component.jsx'
 
 export const CIndex = {
 	CustomButton,
@@ -29,6 +30,7 @@ export const CIndex = {
 	AuthFormContainer,
 	FormInput,
 	SignIn,
+	Spinner,
 	SignUp,
 }
 

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { BallTriangle as Spinner } from 'react-loader-spinner'
 import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchCollectionsStart } from '../redux/slices/shop.slice.js'
@@ -23,16 +22,14 @@ const CollectionDetails = props => {
 		dispatch(fetchCollectionsStart())
 	}, [dispatch])
 
-	const { CollectionItem } = CIndex
+	const { CollectionItem, Spinner } = CIndex
 	const { items } = collection
 
 	return (
 		<div className={styles.CollectionDetails}>
 			<h1>{title}</h1>
 			{shopIsLoading ? (
-				<div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-					<Spinner />
-				</div>
+				<Spinner />
 			) : (
 				<div>
 					{items?.map(item => (
