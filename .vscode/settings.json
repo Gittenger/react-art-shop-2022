@@ -1,10 +1,10 @@
 {
 	"files.exclude": {
-		"src/**.test.js": true,
-		"src/serviceWorker.js": true,
-		"src/setupTests.js": true,
-		"src/reportWebVitals.js": true,
+		"client/src/**.test.js": true,
+		"client/src/serviceWorker.js": true,
+		"client/src/setupTests.js": true,
+		"client/src/reportWebVitals.js": true,
 		"README.md": true,
-		".eslintcache": true
+		"client/.eslintcache": true
 	}
 }
