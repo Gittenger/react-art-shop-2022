@@ -12,7 +12,7 @@ const Checkout = () => {
 	const cartTotal = useSelector(selectCartTotal)
 	const cartItems = useSelector(selectCartItems)
 
-	const { CheckoutItem } = CIndex
+	const { CheckoutItem, StripeButton } = CIndex
 
 	return (
 		<div className={styles.Checkout}>
@@ -45,7 +45,7 @@ const Checkout = () => {
 				<br />
 				4242 4242 4242 4242 - Exp: ANY - CVV: ANY
 			</div>
-			<button className="stripe">Checkout</button>
+			<StripeButton price={cartTotal} />
 		</div>
 	)
 }
