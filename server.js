@@ -1,7 +1,6 @@
 const path = require('path')
 const express = require('express')
 const cors = require('cors')
-const res = require('express/lib/response')
 
 if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 
