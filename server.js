@@ -29,9 +29,11 @@ const corsOptions =
 app.use(cors())
 app.options('*', cors())
 
+if (process.env.NODE_ENV === 'production') {
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
 })
+}
 
 app.listen(port, error => {
 	if (error) throw error
