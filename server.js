@@ -9,8 +9,12 @@ const stripe = require('stripe')(process.env.STRIPE_KEY)
 const app = express()
 const port = process.env.PORT || 5000
 
-app.use(express.json())
-app.use(express.urlencoded())
+app.use(
+	express.json({
+		limit: '50kb',
+	})
+)
+app.use(express.urlencoded({ extended: true }))
 
 app.use(cors())
 
