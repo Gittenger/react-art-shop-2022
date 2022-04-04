@@ -16,7 +16,18 @@ app.use(
 )
 app.use(express.urlencoded({ extended: true }))
 
+const corsOptions =
+	process.env.NODE_ENV === 'production'
+		? {
+				origin: [process.env.CORS_ORIGIN, process.env.CORS_ORIGIN_WWW],
+				credentials: true,
+		  }
+		: {
+				origin: [process.env.CORS_ORIGIN],
+				credentials: false,
+		  }
 app.use(cors())
+app.options('*', cors())
 
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
