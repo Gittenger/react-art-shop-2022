@@ -30,9 +30,9 @@ app.use(cors())
 app.options('*', cors())
 
 if (process.env.NODE_ENV === 'production') {
-app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
-})
+	app.get('*', (req, res) => {
+		res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
+	})
 }
 
 app.listen(port, error => {
@@ -47,10 +47,10 @@ app.post('/payment', (req, res) => {
 		currency: 'usd',
 	}
 
-	stripe.charges.create(body, (stripeErr, stripeRes) => {
-		if (stripeErr) {
+	stripe.charges.create(body, (error, stripeRes) => {
+		if (error) {
 			res.status(500).send({
-				error: stripeErr,
+				error,
 			})
 		} else {
 			res.status(200).send({
