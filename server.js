@@ -1,7 +1,6 @@
 const path = require('path')
 const express = require('express')
 const cors = require('cors')
-const res = require('express/lib/response')
 
 if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 
@@ -10,14 +9,31 @@ const stripe = require('stripe')(process.env.STRIPE_KEY)
 const app = express()
 const port = process.env.PORT || 5000
 
-app.use(express.json())
-app.use(express.urlencoded())
+app.use(
+	express.json({
+		limit: '50kb',
+	})
+)
+app.use(express.urlencoded({ extended: true }))
 
+const corsOptions =
+	process.env.NODE_ENV === 'production'
+		? {
+				origin: [process.env.CORS_ORIGIN, process.env.CORS_ORIGIN_WWW],
+				credentials: true,
+		  }
+		: {
+				origin: [process.env.CORS_ORIGIN],
+				credentials: false,
+		  }
 app.use(cors())
+app.options('*', cors())
 
-app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
-})
+if (process.env.NODE_ENV === 'production') {
+	app.get('*', (req, res) => {
+		res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
+	})
+}
 
 app.listen(port, error => {
 	if (error) throw error
@@ -31,10 +47,10 @@ app.post('/payment', (req, res) => {
 		currency: 'usd',
 	}
 
-	stripe.charges.create(body, (stripeErr, stripeRes) => {
-		if (stripeErr) {
+	stripe.charges.create(body, (error, stripeRes) => {
+		if (error) {
 			res.status(500).send({
-				error: stripeErr,
+				error,
 			})
 		} else {
 			res.status(200).send({
