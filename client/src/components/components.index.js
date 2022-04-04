@@ -14,6 +14,7 @@ import CollectionPreview from './CollectionPreview/CollectionPreview.component.j
 import Header from './Header/Header.component.jsx'
 import Nav from './Nav/Nav.component.jsx'
 import Spinner from './Spinner/Spinner.component.jsx'
+import StripeButton from './StripeButton/StripeButton.component.jsx'
 
 export const CIndex = {
 	CustomButton,
@@ -31,6 +32,7 @@ export const CIndex = {
 	FormInput,
 	SignIn,
 	Spinner,
+	StripeButton,
 	SignUp,
 }
 
