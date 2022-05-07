@@ -35,6 +35,8 @@ app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
 })
 
+//test
+
 app.listen(port, error => {
 	if (error) throw error
 	console.log(`Server running on port ${port}`)
