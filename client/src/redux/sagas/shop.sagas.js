@@ -8,7 +8,6 @@ const { actions } = shopSlice
 
 export function* fetchCollectionsAsync() {
 	try {
-		console.log(process.env.REACT_APP_FIREBASE_API_KEY)
 		const collectionRef = collection(firestore, 'collections')
 		const snapshot = yield getDocs(collectionRef)
 
