@@ -16,6 +16,8 @@ app.use(
 )
 app.use(express.urlencoded({ extended: true }))
 
+app.use(express.static(path.join(__dirname, 'client', 'build')))
+
 const corsOptions =
 	process.env.NODE_ENV === 'production'
 		? {
