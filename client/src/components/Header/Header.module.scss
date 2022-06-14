@@ -1,3 +1,5 @@
+@import '../../styles/utils/_mixins.scss';
+
 .Header {
 	height: 7rem;
 	width: 100%;
@@ -8,7 +10,7 @@
 	// Logo container
 	& > :first-child {
 		height: 100%;
-		width: 8rem;
+		width: 10rem;
 		padding: 2rem;
 
 		a {
@@ -16,5 +18,12 @@
 			text-decoration: none;
 			color: unset;
 		}
+	}
+
+	@include respond(tab-port) {
+		display: grid;
+		grid-template-columns: 1fr;
+		justify-items: center;
+		height: 15rem;
 	}
 }

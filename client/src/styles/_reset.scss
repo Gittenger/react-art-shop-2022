@@ -1,3 +1,5 @@
+@import './utils/mixins';
+
 html {
 	box-sizing: border-box;
 	font-size: 10px;
@@ -38,4 +40,8 @@ img {
 
 body {
 	padding: 2.5rem 2rem;
+
+	@include respond(tab-port) {
+		padding: 3rem 1rem;
+	}
 }
