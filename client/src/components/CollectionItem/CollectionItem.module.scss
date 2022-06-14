@@ -8,6 +8,14 @@
 	height: 34rem;
 	position: relative;
 
+	@include respond(tab-port) {
+		width: 45vw;
+	}
+
+	@include respond(phone-sm) {
+		width: 80vw;
+	}
+
 	&:hover {
 		& > :first-child {
 			opacity: 0.8;

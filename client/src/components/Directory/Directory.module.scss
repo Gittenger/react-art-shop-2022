@@ -1,6 +1,26 @@
+@import '../../styles/utils/_utils.scss';
+
 .Container {
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
+
+	@include respond(tab-port) {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+
+		& > :nth-child(3) {
+			grid-column: 1 / 3;
+		}
+	}
+
+	@include respond(phone-sm) {
+		display: grid;
+		grid-template-columns: 1fr;
+
+		& > :nth-child(3) {
+			grid-column: 1 / 2;
+		}
+	}
 }

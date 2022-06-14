@@ -2,7 +2,11 @@
 
 .Home {
 	@include fc-cen;
-	padding: 2rem 6rem;
+	padding: 5rem 6rem;
+
+	@include respond(tab-port) {
+		padding: 2rem 1rem;
+	}
 }
 
 .ShopOverview {
@@ -29,6 +33,13 @@
 
 		& > div {
 			margin-bottom: 3rem;
+		}
+
+		@include respond(tab-port) {
+			grid-template-columns: 1fr 1fr;
+		}
+		@include respond(phone-sm) {
+			grid-template-columns: 1fr;
 		}
 	}
 }
