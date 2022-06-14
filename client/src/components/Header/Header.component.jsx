@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 import CIndex from '../components.index.js'
 import styles from './Header.module.scss'
+import LogoImg from '../../assets/logo.png'
 
 const Header = () => {
 	const { Nav } = CIndex
@@ -10,7 +11,9 @@ const Header = () => {
 	return (
 		<header className={styles.Header}>
 			<div>
-				<Link to="/">LOGO</Link>
+				<Link to="/">
+					<img src={LogoImg} alt="" />
+				</Link>
 			</div>
 
 			<Nav />
