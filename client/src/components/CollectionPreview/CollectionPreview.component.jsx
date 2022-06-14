@@ -12,9 +12,9 @@ const CollectionPreview = ({ title, items }) => {
 			<h1>{title.toUpperCase()}</h1>
 			<Link to={`/shop/${title}`}>See more</Link>
 			<div>
-				{items.map(item => (
-					<CollectionItem key={item.id} item={item} />
-				))}
+				{items.map(
+					(item, i) => i < 4 && <CollectionItem key={item.id} item={item} />
+				)}
 			</div>
 		</div>
 	)
